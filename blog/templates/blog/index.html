@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block Meta_Description %}
+testokay
+{% endblock Meta_Description %}
+
+{% block content %}
+
+<section class="main-content">
+    <div class="container-xl">
+        <div class="row gy-4">
+            <div class="col-lg-12">
+                <section class="row gy-4">
+
+                    {% for SinlgeBlogInfoData in SinlgeBlogInfoData %}
+                    <!-- single block  -->
+                    <div class="col-sm-4">
+                        <div class="post post-grid rounded bordered">
+                            <div class="thumb top-rounded">
+                                <a href="/{{SinlgeBlogInfoData.Slug}}">
+                                    <div class="inner">
+                                        <img loading="lazy" alt="{{SinlgeBlogInfoData.BlogH1}} - {{SinlgeBlogInfoData.WebsiteName}}" src="{{SinlgeBlogInfoData.BlogImageURL}}" />
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="details">
+                                <h5 class="post-title mb-3 mt-3">
+                                    <a href="/{{SinlgeBlogInfoData.Slug}}">{{SinlgeBlogInfoData.BlogH1 |truncatechars:123}}</a>
+                                </h5>
+                                <p class="excerpt mb-0"> {{SinlgeBlogInfoData.BlogH1P |truncatechars:115 }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- single block ends  -->
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

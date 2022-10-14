@@ -1,0 +1,101 @@
+{% extends "blog/base.html" %}
+
+<!-- Meta Description  -->
+
+{% block Meta_Description %}
+{% endblock Meta_Description %}
+
+<!-- body  -->
+{% block content %}
+{% for SinlgeBlogInfoData in SinlgeBlogInfoData %}    
+    <section class="main-content mt-3">
+        <div class="container-xl">
+            <div class="row gy-4">
+                <div class="col-lg-8" id="Div Wrapper For Page Content">
+                    <div class="post post-single">
+                        
+                        <h1>{{SinlgeBlogInfoData.BlogH1}}</h1>
+                        <div class="featured-image">
+                            <img alt="{{SinlgeBlogInfoData.BlogH1}} - {{SinlgeBlogInfoData.WebsiteName}}" src="{{SinlgeBlogInfoData.BlogImageURL}}" />
+                        </div>
+                        <div class="post-content clearfix">
+                            <p>{{SinlgeBlogInfoData.BlogH1P}}</p>
+                                                        
+                            <h2>{{SinlgeBlogInfoData.BlogH2}}</h2>
+                            <p>{{SinlgeBlogInfoData.BlogH2P}}</p>
+                            
+                            <h2>{{SinlgeBlogInfoData.BlogH3}}</h2>
+                            <p>{{SinlgeBlogInfoData.BlogH3P}}</p>
+                            
+                            <h2>{{SinlgeBlogInfoData.BlogH4}}</h2>
+                            <p>{{SinlgeBlogInfoData.BlogH4P}}</p>
+                            
+                            <h2>{{SinlgeBlogInfoData.BlogH5}}</h2>
+                            <p>{{SinlgeBlogInfoData.BlogH5P}}</p>
+
+                            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    Youtube Video
+                                    Youtube Video
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+                            <!-- <h4>
+                                        Related Video:
+                                    </h4>
+                                    <iframe allowfullscreen="" class="YoutubeVideo" frameborder="0"
+                                        id="YoutubeVideo" src="{{YoutubeVideo}}">
+                                    </iframe> -->
+
+                            <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    Youtube Video
+                                    Youtube Video
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+                                    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="widget rounded">{% for WebsiteData in WebsiteData %}
+                            <div class="widget-about data-bg-image text-center" data-bg-image="static/images/map-bg.png">
+                                <img alt="{{WebsiteData.BlogAuthorName}}" class="mb-4 author_image" src="static/images/author.png" />
+                                <p class="mb-4">{{WebsiteData.BlogAuthorDesc}}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- interlinking  -->
+                        <!-- interlinking  -->
+                        {% for BlogInterlinking in BlogInterlinking%}
+                        <div class="post post-grid rounded bordered">
+                            <div class="thumb top-rounded">
+                                <a href="{{BlogInterlinking.Slug}}">
+                                    <div class="inner">
+                                        <img alt="{% for WebsiteData in WebsiteData %} {{BlogInterlinking.Title}} - {{WebsiteData.WebsiteName}} {% endfor %}" src="{{BlogInterlinking.BlogImageURL}}" />
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="details">
+                                <h5 class="post-title mb-3 mt-3">
+                                    <a href="{{BlogInterlinking.Slug}}">{{BlogInterlinking.BlogH1 |truncatechars:123}} </a>
+                                </h5>
+                                <p class="excerpt mb-0">{{BlogInterlinking.BlogH1P |truncatechars:115 }}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- interlinking  -->
+                        <!-- interlinking  -->
+                        {% endfor %}
+                        
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endfor %}
+    {% endblock content %}

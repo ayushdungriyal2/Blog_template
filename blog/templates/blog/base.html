@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title id="title">{% block Title %} {% endblock Title%}</title>
+    <meta content="{% block Meta_Description %}{% endblock Meta_Description %}" name="description" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport"/>
+    <link href={% static "images/favicon.svg"%} rel="shortcut icon" type="image/x-icon"/>
+    <link href={% static "css/bootstrap.min.css"%} media="all" rel="stylesheet" type="text/css"/>
+    <link href={% static "css/all.min.css"%} media="all" rel="stylesheet" type="text/css"/>
+    <link href={% static "css/slick.css"%} media="all" rel="stylesheet" type="text/css"/>
+    <link href={% static "css/simple-line-icons.css"%} media="all" rel="stylesheet" type="text/css"/>
+    <link href={% static "css/style.css"%} media="all" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+     
+    <div class="site-wrapper">
+        <div class="main-overlay">
+        </div>
+        <header class="header-personal">
+            <div class="container-xl header-top">
+                <div class="row align-items-center">
+                    <div class="col-4 d-none d-md-block d-lg-block">
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                        <a class="navbar-brand" href="/"><img alt="Logo - {{Site_Name}}" src={% static "images/logo.svg" %} /></a>
+                        <a class="d-block text-logo" href="/" id="header_site_title">{% for WebsiteData in WebsiteData %}{{WebsiteData.WebsiteName}}{% endfor %}</a>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="header-buttons float-md-end mt-4 mt-md-0"></div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-xl">
+                    <div class="collapse navbar-collapse justify-content-center centered-nav">
+                        {% for CategoryData in CategoryData %}
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                              <a class="nav-link hover_my_tab " href="/category/{{CategoryData.Name}}">  {{CategoryData.Name}}  </a> 
+                            </li>
+                        </ul>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {% block content %}{% endblock content %}
+        <footer>
+            <div class="container-xl">
+                <div class="footer-inner">
+                    <div class="row d-flex align-items-center gy-4">
+                        <div class="col-md-4">
+                            <span class="copyright">Copyright © 2022{% for WebsiteData in WebsiteData %} {{WebsiteData.WebsiteName}}{% endfor %}.</span>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <span>
+                                <p>Made with <img src={% static "images/heart.svg" %} alt="Heart - {{Site_Name}}"
+                                        style="margin-right:2.2px; margin: left 2.2px;" /> by {% for WebsiteData in WebsiteData %}
+                                        {{WebsiteData.BlogAuthorName}}
+                                        {% endfor %}</p>
+                            </span>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="float-md-end" href="#" id="return-to-top">
+                                <i class="icon-arrow-up">
+                                </i>Back to Top
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src={% static "js/jquery.min.js" %}>
+    </script>
+    <script src={% static "js/popper.min.js"  %}>
+    </script>
+    <script src={% static "js/bootstrap.min.js" %}>
+    </script>
+    <script src={% static "js/slick.min.js" %}>
+    </script>
+    <script src={% static "js/jquery.sticky-sidebar.min.js" %}>
+    </script>
+    <script src={% static "js/custom.js" %}>
+    </script>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+

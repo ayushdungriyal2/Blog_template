@@ -1,19 +1,28 @@
 # import here 
 from django.db import models
 from autoslug import AutoSlugField
+import os
+from django.core.validators import FileExtensionValidator
+
 # import end 
 
 # function to rename image 
 def image_directory_path(instance, filename):
+    # delete if author.png exist 
+    try :
+        os.remove("blog/static/images/Author.png")
+    except :
+        pass
+    # end delete if author.png exist 
     ext = filename.split('.')[-1]
     return 'blog/static/images/{}.{}'.format('Author', ext)
-# end function to rename image 
+    # end function to rename image 
 
 
 # website info 
 class WebsiteInfo(models.Model):
     WebsiteName = models.CharField(max_length=50000, default="")
-    BlogAuthorImage = models.ImageField(max_length=250, upload_to=image_directory_path, null=True, blank=True)
+    BlogAuthorImage = models.ImageField(max_length=250, upload_to=image_directory_path, null=True, blank=True, validators=[FileExtensionValidator('PNG')])
     BlogAuthorName = models.CharField(max_length=250,  default="")
     BlogAuthorDesc = models.CharField(max_length=250,  default="")
 # end website info 
@@ -51,8 +60,6 @@ class SinlgeBlogInfo(models.Model):
         return self.BlogH1
 
 # end SinlgeBlogInfo 
-
-
 
 
 

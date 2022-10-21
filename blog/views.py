@@ -30,15 +30,17 @@ def FromString(request, str):
     # interlinking 
     
     Id = SinlgeBlogInfo.objects.filter(Slug=str).values_list('id')
+    IdList = SinlgeBlogInfo.objects.all().values_list('id')
+    LastId = list(IdList)[0][0]
 
-    if Id[0][-1] :
+    if Id[0][0] == LastId :
         Interlinking_id = 1
         BlogInterlinking = SinlgeBlogInfo.objects.all().filter(id=Interlinking_id)
         Context = {"SinlgeBlogInfoData": SinlgeBlogInfoData, "WebsiteData": WebsiteData,"BlogInterlinking": BlogInterlinking,"CategoryData":CategoryData}
         return render(request, 'blog/single-blog-page-template.html', Context)
 
     else:
-        print(Id[0][-1])
+        print('else')
         Interlinking_id = Id[0][0] + 1
         BlogInterlinking = SinlgeBlogInfo.objects.all().filter(id=Interlinking_id)
         Context = {"SinlgeBlogInfoData": SinlgeBlogInfoData, "WebsiteData": WebsiteData,"BlogInterlinking": BlogInterlinking,"CategoryData":CategoryData}

@@ -22,7 +22,7 @@ def image_directory_path(instance, filename):
 # website info 
 class WebsiteInfo(models.Model):
     WebsiteName = models.CharField(max_length=50000, default="")
-    BlogAuthorImage = models.ImageField(max_length=250, upload_to=image_directory_path, null=True, blank=True, validators=[FileExtensionValidator('PNG')])
+    BlogAuthorImage = models.ImageField(max_length=250, upload_to=image_directory_path, null=True, blank=True, validators=[FileExtensionValidator(['PNG'])])
     BlogAuthorName = models.CharField(max_length=250,  default="")
     BlogAuthorDesc = models.CharField(max_length=250,  default="")
 # end website info 
